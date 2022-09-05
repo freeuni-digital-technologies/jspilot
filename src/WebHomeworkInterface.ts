@@ -114,7 +114,7 @@ export class WebHomework implements HomeworkInterface {
         prevButton.innerText = 'წინა ნაბიჯი';
         progressBarDiv.appendChild(prevButton);
 
-        document.getElementById('tests')!.appendChild(progressBarDiv!)
+        document.getElementById('progress-bar')!.appendChild(progressBarDiv!)
     }
 
 }

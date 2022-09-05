@@ -1,3 +1,5 @@
+import {MESSAGES} from "./HwInstructions";
+
 export function setupTestsDiv() {
     const styles = [
         'https://unpkg.com/mocha/mocha.css',
@@ -6,12 +8,17 @@ export function setupTestsDiv() {
     styles
         .map(getStyleElement)
         .forEach(e => document.head.appendChild(e))
+    const helpOptions = Object.keys(MESSAGES).map(m =>
+        `<button onclick="showMessage('${m}')">${m}</button>`
+    ).join('')
     const testsDiv = `
     <div id="tests" class="container">
         <div id="progress-bar"></div>
         <div id="mocha"></div>
         <div id="help">
-            <div id="help-buttons"></div>
+            <div id="help-buttons">
+                ${helpOptions}
+            </div>
             <div id="instructions"></div>
         </div>
     </div>`
