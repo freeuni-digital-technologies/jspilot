@@ -1,11 +1,11 @@
 import {ProcessState} from "./Interfaces/ProcessState";
-import {HomeworkProcess} from "./Interfaces/HomeworkProcess";
+import {HomeworkInterface} from "./Interfaces/HomeworkInterface";
 import {DigitalHwProcessState} from "./DigitalHwProcessState";
-import {DigitalHomeworkProcess} from "./DigitalHomeworkProcess";
+import {WebHomework} from "./WebHomeworkInterface";
 import {toggle, setupTestsDiv} from "./utils";
 import 'mocha';
 
-export function setUpHomeworkInterface(config?: ProcessState, homework?: HomeworkProcess): HomeworkProcess {
+export function setUpHomeworkInterface(config?: ProcessState, homework?: HomeworkInterface): HomeworkInterface {
     if(!config) {
         config = new DigitalHwProcessState();
     }
@@ -13,7 +13,7 @@ export function setUpHomeworkInterface(config?: ProcessState, homework?: Homewor
     mocha.setup("bdd");
 
     if(!homework) {
-        homework = new DigitalHomeworkProcess(config);
+        homework = new WebHomework(config);
     }
 
     (window as any).homework = homework;

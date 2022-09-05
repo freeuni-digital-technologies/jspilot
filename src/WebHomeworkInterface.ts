@@ -1,10 +1,10 @@
-import {HomeworkProcess} from "./Interfaces/HomeworkProcess";
+import {HomeworkInterface} from "./Interfaces/HomeworkInterface";
 import {ProcessState} from "./Interfaces/ProcessState";
 import 'mocha';
 import {setupTestsDiv, toggle} from "./utils";
 import {DigitalHwProcessState} from "./DigitalHwProcessState";
 
-export class DigitalHomeworkProcess implements HomeworkProcess {
+export class WebHomework implements HomeworkInterface {
     config: ProcessState;
 
     constructor(config?: ProcessState) {

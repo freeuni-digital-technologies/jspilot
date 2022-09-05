@@ -1,7 +1,7 @@
-import { DigitalHomeworkProcess } from '../../src/DigitalHomeworkProcess'
+import { WebHomework } from '../../src/WebHomeworkInterface'
 import { generateTests } from './tests'
 
-const hw = new DigitalHomeworkProcess();
+const hw = new WebHomework();
 
 generateTests(hw.config)
 hw.runTests()

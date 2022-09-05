@@ -1,7 +1,7 @@
 import {ProcessState} from "./ProcessState";
 import 'mocha';
 
-export interface HomeworkProcess {
+export interface HomeworkInterface {
     config: ProcessState;
 
     runTests(): void;
