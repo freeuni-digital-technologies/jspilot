@@ -3,43 +3,14 @@ import { expect, assert } from 'chai'
 // რიცხვების შეცვლა არ დაგვავიწყდეს
 import { toggle } from '../../src/utils'
 import { showMessage } from '../../src/HwInstructions'
+
 const steps = {
     introduction: 1,
     setup_and_password: 2,
-    /**
-     * სტილი შეუცვალოს პაროლს და დამალოს
-     * head title საიტის სახელი
-     * browser tab icon
-     * h1 სტუდენტის სახელის საიტი (ტესტში შეამოწმე რომ მთავრდება 'ს საიტი')
-     * h1 id იყოს მათი emailid (ეს შემოწმდება სერვერზე)
-     * div სათაურისთვის (გრძელი bar რამე ფერით, h1 იყოს მარჯვნივ)
-     */
     header: 3,
-    /**
-     * აქვს სურათი მთლიან ბექგრაუნდზე (ლეპტოპის ეკრანის სიგანე და შესაბამისი სიმაღლე რაც გამოვა)
-     * სურათი უნდა გადმოწერონ (src შევამოწმებთ რომ http-ით არ იწყება)
-     * პარაგრაფი არის მარჯვნივ (მაგრამ ბოლომდე მიწეული არა)
-     * აქვს ფერადი ფონი (რომ სურათს გამოეყოს) და padding
-     * h2 გვერდის სახელი id page1
-     */
     page_1: 4,
-    /**
-     * აქვს რამდენიმე სურათი (width: 20%) გვერდიგვერდ
-     * ჩასვან ლინკით (ამის ინსტრუქცია გამოჩნდეს)
-     * რომლებიც თავიდან ცოტა გამჭვირვალედ არის
-     * mouse hover-ზე მკვეთრდება და ოდნავ იზრდება
-     */
     page_2: 5,
-    /**
-     * internal hrefs to page 1 and page2, aligned right. with padding
-     * ყველა ჩასქროლვაზე ჩანს
-     */
     menu: 6,
-    /**
-     * ონი არის ნახევრად გამჭვირვალე.
-     * ეწერება სტუდენტის სახელი და გვარი,
-     * c თბილისის თავისუფალი უნივერსიტეტი, 2021.
-     */
     footer: 7,
     done: 8
 }
@@ -343,7 +314,6 @@ export function generateTests(CONFIG) {
         //     const image = container.querySelector("img.image-row");
 
         //     const imageStyle = window.getComputedStyle(image);
-        //     console.log(imageStyle)
         //     expect(imageStyle.getPropertyValue("opacity") == "1").to.be.true;
         // })
 
@@ -420,8 +390,6 @@ export function generateTests(CONFIG) {
 
             const spans = paragraphs[0].querySelectorAll("span");
             expect(spans).to.have.lengthOf(2)
-            console.log(spans);
-
             expect(spans[0].innerText).to.have.lengthOf.at.least(1)
             expect(spans[1].innerText).to.equal("Ⓒ თბილისის თავისუფალი უნივერსიტეტი, 2021");
             expect(footer.style.textAlign || window.getComputedStyle(footer).getPropertyValue("text-align")).to.equal("center")

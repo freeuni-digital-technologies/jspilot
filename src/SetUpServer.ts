@@ -25,7 +25,6 @@ export function setUpServer() {
 }
 
 function testRequest() {
-    console.log(testResults);
     const xhr = new XMLHttpRequest();
     xhr.open("POST", 'http://localhost:3939', true);
 

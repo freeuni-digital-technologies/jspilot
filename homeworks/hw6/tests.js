@@ -21,7 +21,6 @@ export function generateTests(hw) {
 // TODO შეგვიძლია შევამოწმოთ window.url 
 // და მაგის მიხედვით ჩავრთოთ ყველა ტესტი 
 // CONFIG.checkAll = true
-	console.log(CONFIG.isStep(steps.introduction))
 	CONFIG.isStep(steps.introduction) && describe(`მინი კალკულატორი`, () => {
 		CONFIG.hints = 'on'
 		it(`ამ დავალების მიზანია ჯავასკრიპტის ფუნქციების და DOM-ის ვარჯიში.
@@ -277,7 +276,7 @@ export function generateTests(hw) {
 		 it(`let result = Number(a) + Number(b) აღარაა საჭირო, შეგიძლია პირდაპირ
 			მიუმატო`, () => {
 				const oldNumber = window.Number
-				const numberTimesCalled = 0
+				let numberTimesCalled = 0
 				const oldGetValue = window.getValue
 				// getValue-მ რომ არ გამოიძახოს Number()
 		 		window.getValue = (id) => {}

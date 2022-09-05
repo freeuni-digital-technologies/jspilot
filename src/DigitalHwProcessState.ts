@@ -27,9 +27,6 @@ export class DigitalHwProcessState implements ProcessState{
     readData(): void {
         const documentConfig = JSON.parse(localStorage.getItem('config')!) || {currentStep: 1};
         Object.keys(documentConfig).forEach(elem => {
-            console.log(this);
-            console.log(documentConfig);
-            console.log(documentConfig[elem]);
             return this[elem] = documentConfig[elem];
         });
     }
