@@ -1,4 +1,4 @@
-import { DigitalHomeworkProcess } from '../../src/DigitalHomeworkProcess.js'
+import { DigitalHomeworkProcess } from '../../src/DigitalHomeworkProcess'
 import { generateTests } from './tests'
 
 const hw = new DigitalHomeworkProcess();

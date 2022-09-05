@@ -1,5 +1,5 @@
-import {ProcessState} from "../Interfaces/ProcessState";
-import {HomeworkProcess} from "../Interfaces/HomeworkProcess";
+import {ProcessState} from "./Interfaces/ProcessState";
+import {HomeworkProcess} from "./Interfaces/HomeworkProcess";
 import {DigitalHwProcessState} from "./DigitalHwProcessState";
 import {DigitalHomeworkProcess} from "./DigitalHomeworkProcess";
 import {toggle, setupTestsDiv} from "./utils";

@@ -1,4 +1,4 @@
-import {ProcessState} from "../Interfaces/ProcessState";
+import {ProcessState} from "./Interfaces/ProcessState";
 
 export class DigitalHwProcessState implements ProcessState{
     checkAll: boolean = false;

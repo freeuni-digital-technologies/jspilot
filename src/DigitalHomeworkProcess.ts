@@ -1,5 +1,5 @@
-import {HomeworkProcess} from "../Interfaces/HomeworkProcess";
-import {ProcessState} from "../Interfaces/ProcessState";
+import {HomeworkProcess} from "./Interfaces/HomeworkProcess";
+import {ProcessState} from "./Interfaces/ProcessState";
 import 'mocha';
 import {setupTestsDiv, toggle} from "./utils";
 import {DigitalHwProcessState} from "./DigitalHwProcessState";
