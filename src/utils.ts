@@ -1,9 +1,11 @@
 import {MESSAGES} from "./HwInstructions";
+// @ts-ignore
+import stylesFile from 'url:../homeworks/teststyles.css'
 
 export function setupTestsDiv() {
     const styles = [
         'https://unpkg.com/mocha/mocha.css',
-        'https://freeuni-digital-technologies.github.io/webHwInterface/teststyles.css'
+        stylesFile
     ]
     styles
         .map(getStyleElement)
