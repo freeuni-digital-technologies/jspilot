@@ -1,7 +1,10 @@
 // ამ ფაილში იქნება სხვადასხვა ინსტრუქციების
 // ჩვეულებრივ დამალული იქნება, პირველ გვერდზე მოეხსნება
 // დამალვა და დანარჩენებზე ღილაკს თუ დააჭერენ გამოჩნდება
-
+// @ts-ignore
+import consoleGifFile from 'url:../homeworks/static/open_console.gif'
+// @ts-ignore
+import consoleInputImage from 'url:../homeworks/static/console_input.png'
 export const MESSAGES = {}
 
 MESSAGES['პირობები'] = `
@@ -32,7 +35,7 @@ MESSAGES['ედიტორის-გამოყენება'] = `
         <br>2. გადატვირთე გვერდი ბრაუზერში (ctrl+r/cmd+r)
 `
 
-MESSAGES['inspect-element-გამოყენება'] = `
+MESSAGES['inspect-element'] = `
     inspect element არის ბრაუზერის ფუნქცია, ნახო საიტის html და css კოდი. ამისთვის, საიტის ცარიელ ადგილას
     (ისე რომ ლინკი ან სურათი არ იყოს კურსორის ქვეშ) გააკეთე right click და დააჭირე inspect-ს. აქ შეგიძლია
     სხვადასხვა ელემენტები და მათი სტილები ნახო. თუ კონკრეტული სიტყვის ძებნა გინდა (მაგალითად, real-password),
@@ -41,13 +44,23 @@ MESSAGES['inspect-element-გამოყენება'] = `
        
 `
 
-MESSAGES['კონსოლის-გამოყენება'] = `
+MESSAGES['კონსოლი'] = `
     ბრაუზერის კონსოლი იმავე სივრცეშია, სადაც inspect element. უცებ გამოსატანად
     ეს shortcut გამოიყენე
         <br>MAC chrome > cmd + option + j
         <br>MAC firefox > cmd + option + k
         <br>windows chrome > ctrl + shift + j
         <br>windows firefox > ctrl + shift + k
+`
+
+MESSAGES['კონსოლის-გახსნა'] = `
+    საიტის ნებისმიერ ცარიელ ადგილას მარჯვენა ღილაკის დაჭერით სტანდარტული მენიუ გამოვა. მის ბოლოში, ყველა ბრაუზერში წერია "inspect" ან "inspect element", დააჭირე ამ ღილაკს. ახალი გამოჩენილი ფანჯრის პირველ რიგში არის მენიუ: Elements, Console, Network... დააჭირე Console-ს. შეგიძლია ქვემოთ მოცემული ვიდეოთი იხელმძღვანელო.
+    <img src="${consoleGifFile}" alt="">
+`
+
+MESSAGES['კონსოლის-გამოყენება'] = `
+    შენს მიერ გახსნილ ფანჯარაში ქვემოთ ლურჯი > სიმბოლო არის. დააკლიკე მის მარჯვნივ, რომ ტექსტი შეიყვანო. როდესაც ინსტრუქციაში > სიმბოლოს დაინახავ, ეს ნიშნავს რომ სიმბოლოს შემდეგ დაწერილი კოდი კონსოლში უნდა შეიყვანო და "enter"-ს დააჭირო
+    <img src=${consoleInputImage}" alt="">
 `
 
 MESSAGES['დავალების-ატვირთვა'] = `

@@ -1,4 +1,4 @@
-import { expect, assert } from 'chai'
+import { expect } from 'chai'
 // აქ ჩამოვწერთ რომელი მერამდენე იყოს რომ შემთხვევით
 // რიცხვების შეცვლა არ დაგვავიწყდეს
 import { toggle } from '../../src/utils'
@@ -61,7 +61,7 @@ export function generateTests(CONFIG) {
         })
 
         toggle('help')
-        showMessage('inspect-element-გამოყენება', 'ედიტორის-გამოყენება')
+        showMessage('inspect-element', 'ედიტორის-გამოყენება')
 
     })
 
@@ -75,7 +75,7 @@ export function generateTests(CONFIG) {
             expect(text).to.have.lengthOf.above(0)
 
         })
-        it("<title> საიტის სახელი</title> - ეს ხაზი დაამატე <head>-ის შემდეგ")
+        it("<title> საიტის სახელი</title> - ეს ხაზი დაამატე head თეგის-ის შემდეგ")
 
         it(`ახლა საიტს ლოგოსავით რამე დავამატოთ, ბრაუზერის tab-ებში რომ მარტივად
     გამოჩნდეს. head ელემენტში შექმენი link, რომლის საშუალებითაც შეცვლი browser tab icon-ს.
@@ -93,8 +93,8 @@ export function generateTests(CONFIG) {
             expect(link.href.endsWith('.ico')).to.be.true
             expect(link.href.startsWith('http')).to.be.true
         })
-        it("<link rel='icon' href='___' />")
-        it("___ მაგივრად ჩაწერე icon-ის ბმული")
+        it("<link rel='icon' href='' />")
+        it("href='___'-ში ___ მაგივრად ჩაწერე icon-ის ბმული")
 
 
         it(`შექმენი div ელემენტი, რომლის id იქნება website-title-container და
@@ -195,7 +195,7 @@ export function generateTests(CONFIG) {
             expect(src).to.exist
             expect(strStartsWith(src,"http")).to.be.false;
         })
-        it("<img src='./my-image.jpg'/>")
+        it("<img src='' alt=''/>")
         it("#page1 img { width: 100% }")
         it(`my-image მაგივრად უნდა ეწეროს გადმოწერილი სურათის სახელი. იმისთვის, რომ გაიგო, jpg არის თუ png, გადმოწერისას შეხედე
     ბმულს, ან გადმოწერილ ფაილზე right click > get info ან properties და იქ გაჩვენებს სრულ სახელს.
