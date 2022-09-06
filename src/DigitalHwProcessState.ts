@@ -29,6 +29,8 @@ export class DigitalHwProcessState implements ProcessState{
         Object.keys(documentConfig).forEach(elem => {
             return this[elem] = documentConfig[elem];
         });
+        this.testCount = 0
+        this.failed = false
     }
 
     increaseStep() {

@@ -89,7 +89,7 @@ export class WebHomework implements HomeworkInterface {
 
         const helpButton = document.createElement('button');
         helpButton.setAttribute('class', "align-right");
-        helpButton.addEventListener('click', (e) => {
+        helpButton.addEventListener('click', () => {
             toggle('help');
         });
         helpButton.innerText = 'დახმარება';
@@ -98,7 +98,7 @@ export class WebHomework implements HomeworkInterface {
         const nextButton = document.createElement('button');
         nextButton.setAttribute('class', "align-right" + status);
         if(!this.config.failed) {
-            nextButton.addEventListener('click', (e) => {
+            nextButton.addEventListener('click', () => {
                 this.nextStep();
             });
         }
@@ -108,13 +108,12 @@ export class WebHomework implements HomeworkInterface {
 
         const prevButton = document.createElement('button');
         prevButton.setAttribute('class', "align-right ");
-        prevButton.addEventListener('click', (e) => {
+        prevButton.addEventListener('click', () => {
             this.prevStep();
         });
         prevButton.innerText = 'წინა ნაბიჯი';
         progressBarDiv.appendChild(prevButton);
 
-        document.getElementById('progress-bar')!.appendChild(progressBarDiv!)
     }
 
 }
