@@ -1,8 +1,9 @@
 import {MESSAGES} from "./HwInstructions";
 // @ts-ignore
 import stylesFile from 'url:../homeworks/teststyles.css'
+import {ProcessState} from "./Interfaces/ProcessState";
 
-export function setupTestsDiv() {
+export function setupTestsDiv(config: ProcessState) {
     const styles = [
         'https://unpkg.com/mocha/mocha.css',
         stylesFile
@@ -10,7 +11,8 @@ export function setupTestsDiv() {
     styles
         .map(getStyleElement)
         .forEach(e => document.head.appendChild(e))
-    const helpOptions = Object.keys(MESSAGES).map(m =>
+    const messagesToDisplay = config.messagesToDisplay || Object.keys(MESSAGES)
+    const helpOptions = messagesToDisplay.map(m =>
         `<button onclick="showMessage('${m}')">${m}</button>`
     ).join('')
     const testsDiv = `
@@ -29,7 +31,7 @@ export function setupTestsDiv() {
 
 }
 
-export function getStyleElement(src, callback): HTMLLinkElement {
+export function getStyleElement(src): HTMLLinkElement {
     let s = document.createElement('link');
     s.setAttribute('rel', 'stylesheet');
     s.setAttribute('href', src)

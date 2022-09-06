@@ -4,6 +4,7 @@ export interface ProcessState {
     checkAll: boolean;
     failed: boolean;
     hints: boolean;
+    messagesToDisplay?: string[];
 
     save(): void;
 

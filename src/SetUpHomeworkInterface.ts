@@ -20,7 +20,7 @@ export function setUpHomeworkInterface(config?: ProcessState, homework?: Homewor
     (window as any).config = homework.config;
 
     homework.checkPath();
-    setupTestsDiv();
+    setupTestsDiv(config);
     toggle("help");
 
     return homework;
