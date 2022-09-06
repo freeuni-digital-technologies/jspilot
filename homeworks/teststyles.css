@@ -32,7 +32,13 @@ active
 #mocha .suite h2 {
         pointer-events: none;    
 }
+#mocha h2 {
+    font-size: 14px;
+}
 
+#mocha .pending h2 {
+    color: #505050;
+}
 
 /* #progress-bar, #mocha { */
 #tests {
