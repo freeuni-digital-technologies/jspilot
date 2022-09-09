@@ -42,3 +42,11 @@ export function toggle(id: string) {
     const e = document.getElementById(id)!.style;
     e.display = e.display === 'none' ? '' : 'none';
 }
+
+export function splitToLines(text: string) {
+    text
+        .split('\n')
+        .filter(l => l.trim().length > 0)
+        // @ts-ignore
+        .map(l => it(l.replaceAll('\`', '').replaceAll('()', '( )')))
+}
