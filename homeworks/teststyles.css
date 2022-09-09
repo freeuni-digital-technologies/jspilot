@@ -30,14 +30,19 @@ active
 }
 
 #mocha .suite h2 {
-        pointer-events: none;    
+    pointer-events: none;
 }
+
 #mocha h2 {
     font-size: 14px;
 }
 
+p {
+    font-size: 14px;
+}
+
 #mocha .pending h2 {
-    color: #505050;
+    color: black;
 }
 
 /* #progress-bar, #mocha { */
