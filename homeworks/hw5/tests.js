@@ -324,12 +324,6 @@ export function generateTests(CONFIG) {
             expect(containerStyle.getPropertyValue("justify-content")).to.be.equal("space-around")
         })
         it("ამისთვის დაგჭირდებათ, რომ page2-content display იყოს flex და justify-content იყოს space-around")
-
-        it(`ერთი ჩელენჯი გვაქვს, შეგიძლია, ისე გააკეთო, რომ სურათზე მაუსის მიტანისას
-        სურათი ნაწილობრივ გამჭვირვალე აღარ იყოს?
-        მინიშნება: (css elmeent hover opacity)`, () => {
-        })
-
     })
 
     CONFIG.isStep(steps.menu) && describe("Menu", () => {
