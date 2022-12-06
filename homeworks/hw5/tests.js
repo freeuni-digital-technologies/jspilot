@@ -1,8 +1,8 @@
-import { expect } from 'chai'
+import {expect} from 'chai'
 // აქ ჩამოვწერთ რომელი მერამდენე იყოს რომ შემთხვევით
 // რიცხვების შეცვლა არ დაგვავიწყდეს
-import { toggle } from '../../src/utils'
-import { showMessage } from '../../src/HwInstructions'
+import {toggle} from '../../src/utils'
+import {showMessage} from '../../src/HwInstructions'
 
 const steps = {
     introduction: 1,
@@ -100,7 +100,7 @@ export function generateTests(CONFIG) {
         it(`შექმენი div ელემენტი, რომლის id იქნება website-title-container და
     მასში დაამატე h1, რომლის id იქნება website-title. ხოლო კლასი უნდა ქონდეს შენი emailid
         ჩაწერე სათაური, რომელიც იქნება შემდეგი ფორმატის, მაგალითად: გიგის საიტი. აუცილებელია, რომ ზუსტად
-        ეს სიტყვები გამოიყენო`,() => {
+        ეს სიტყვები გამოიყენო`, () => {
             const elem = document.querySelector("div#website-title-container");
             expect(elem).to.exist
             const h1 = document.querySelector("div#website-title-container > h1#website-title");
@@ -110,21 +110,21 @@ export function generateTests(CONFIG) {
             expect(h1_id).to.exist
 
             const text = h1.innerText;
-            expect(strEndsWith(text,'ს საიტი')).to.be.true;
+            expect(strEndsWith(text, 'ს საიტი')).to.be.true;
             expect(text).to.have.lengthOf.at.least(9)
         })
 
         it(`<div id='website-title-container'><h1 id='website-title' class='imghv14'>
         ვინმეს საიტი</h1></div>`)
 
-        it('head ელემენტში შექმენი style ელემენტი',() => {
+        it('head ელემენტში შექმენი style ელემენტი', () => {
             const style = document.querySelector("head > style");
             expect(style).to.exist
         })
         it("<style></style>")
 
         it(`h1-ის div-ს უნდა ქონდეს 2px სისქის border, რომელიც იქნება წყვეტილი(იგულისხმება dotted) და ლურჯი (rgb) ფერის(blue).
-        style თაგში გამოიყენე #website-title სელექტორი. ტექსტზე ძალიან მიბჯენილი რომ არ გამოვიდეს, 10px padding დაუმატე`,() => {
+        style თაგში გამოიყენე #website-title სელექტორი. ტექსტზე ძალიან მიბჯენილი რომ არ გამოვიდეს, 10px padding დაუმატე`, () => {
             const h1 = document.querySelector("div#website-title-container > h1#website-title")
             const h1styleTag = window.getComputedStyle(h1);
             const h1styleAttr = h1.style;
@@ -145,7 +145,7 @@ export function generateTests(CONFIG) {
         it(`    border: 2px dotted rgb(0, 0, 255);`)
         it(`}`)
 
-        it("დამალე პაროლი. ამისათვის საკმარისია, რომ მისი სტილი გახადო display: none",() => {
+        it("დამალე პაროლი. ამისათვის საკმარისია, რომ მისი სტილი გახადო display: none", () => {
             const passwordDiv = document.getElementById("write-password-here");
 
 
@@ -162,8 +162,8 @@ export function generateTests(CONFIG) {
 
     })
 
-    CONFIG.isStep(steps.page_1) && describe("Page 1",() => {
-        it("შექმენი div ელემენტი, რომლის id იქნება page1",() => {
+    CONFIG.isStep(steps.page_1) && describe("Page 1", () => {
+        it("შექმენი div ელემენტი, რომლის id იქნება page1", () => {
             const div = document.querySelector("div#page1");
             expect(div).to.exist
         })
@@ -171,7 +171,7 @@ export function generateTests(CONFIG) {
 
         it(`div#page1 ელემენტის დასაწყისში (კონტენტის და სურათის თავზე)
     შექმენი h1 ელემენტი, რომლის id იქნება page1-title. ჩაწერე რამე შენთვის მნიშვნელოვანი
-    და სურათთან დაკავშირებული სიტყვები (პოეტურობა არ დაიშურო)`,() => {
+    და სურათთან დაკავშირებული სიტყვები (პოეტურობა არ დაიშურო)`, () => {
             const h1 = document.querySelector("div#page1 > h1#page1-title");
             expect(h1).to.exist
         })
@@ -188,12 +188,12 @@ export function generateTests(CONFIG) {
         keyword-ია ასეთის მოსაძებნად))
     ოღონდ სურათი უნდა იყოს დამატებული შენივე ლეპტოპიდან (გადმოწერე და პროექტის ფოლდერში გადაიტანე). 
     იმისთვის, რომ სურათმა მთელი გვერდი დაიკავოს, მისი სიგანე 100% გავხადოთ, სიმაღლეს
-    კი ავტომატურად შეეცვლება ზომა`,() => {
+    კი ავტომატურად შეეცვლება ზომა`, () => {
             const img = document.querySelector("div#page1 > div#page1-content >img");
             expect(img).to.exist
             const src = img.getAttribute("src");
             expect(src).to.exist
-            expect(strStartsWith(src,"http")).to.be.false;
+            expect(strStartsWith(src, "http")).to.be.false;
         })
         it("<img src='' alt=''/>")
         it("#page1 img { width: 100% }")
@@ -213,11 +213,13 @@ export function generateTests(CONFIG) {
         })
 
 
-        it('დამატებითი ჩელენჯი თუ გინდა, დაგუგლე, როგორ მოექცეს წარწერა სურათის თავზე', () => {})
+        it('დამატებითი ჩელენჯი თუ გინდა, დაგუგლე, როგორ მოექცეს წარწერა სურათის თავზე', () => {
+        })
 
         it(`თუ შენი მშვენიერი საიტით დატკბობა მოგინდება ხოლმე "დახმარება"-ში დამალე 
-    ტესტები. თავიდან გამოსაჩენად გვერდი გადატვირთე`, () => {})
-        it("შექმნილი div#page1-content-ს სტილი ისე შეუცვალე, რომ სურათი მოექცეს შუაში",() => {
+    ტესტები. თავიდან გამოსაჩენად გვერდი გადატვირთე`, () => {
+        })
+        it("შექმნილი div#page1-content-ს სტილი ისე შეუცვალე, რომ სურათი მოექცეს შუაში", () => {
             const div = document.querySelector("div#page1 > div#page1-content");
 
             const divStyle = window.getComputedStyle(div);
@@ -233,10 +235,11 @@ export function generateTests(CONFIG) {
 
     })
 
-    CONFIG.isStep(steps.page_2) && describe("Page 2",() => {
+
+    CONFIG.isStep(steps.page_2) && describe("Page 2", () => {
         it(`შექმენი div ელემენტი, რომლის id იქნება page2. ამ გვერდს რამე ფერი შეურჩე (დაგუგლე 
         color picker). იმისთვის, რომ 
-    ფონის ფერი გამოჩნდეს, ელემენტს სიმაღლე მიეცი - 600px`,() => {
+    ფონის ფერი გამოჩნდეს, ელემენტს სიმაღლე მიეცი - 600px`, () => {
             const div = document.querySelector("div#page2");
             expect(div).to.exist
             const styleTag = window.getComputedStyle(div);
@@ -256,7 +259,7 @@ export function generateTests(CONFIG) {
 
         it(`div#page2 ელემენტში შექმენი h1 ელემენტი,რომლის id იქნება page2-title, მასში რაიმე ეწერება და ჰორიზონტალურად 
     შუაში იქნება მოქცეული. ძალიან მიბჯენილი რომ არ გამოვიდეს წინა გვერდზე, მოდი
-    margin-top იყოს 250 პიქსელი`,() => {
+    margin-top იყოს 250 პიქსელი`, () => {
             const h1 = document.querySelector("div#page2 > h1#page2-title");
             expect(h1).to.exist
             expect(h1.innerText).to.have.lengthOf.gt(0)
@@ -281,14 +284,14 @@ export function generateTests(CONFIG) {
          * mouse hover-ზე მკვეთრდება და ოდნავ იზრდება
          */
         it(`ჩასვი div#page2-content მინიმუმ სამი განსხვავებული სურათი, რომლებსაც კლასი ექნებათ image-row. სურათები
-    ამჯერად როგორც გინდა ისე ჩასვი (ბმულით ან გადმოწერით)`,() => {
+    ამჯერად როგორც გინდა ისე ჩასვი (ბმულით ან გადმოწერით)`, () => {
             const container = document.querySelector("div#page2 > div#page2-content");
 
             const images = container.querySelectorAll("img.image-row");
             expect(images).to.have.lengthOf.at.least(3)
 
             let imageSrcs = new Set();
-            for(image of images){
+            for (image of images) {
                 const src = image.getAttribute("src");
                 expect(src).to.have.lengthOf.at.least(1)
                 imageSrcs.add(src);
@@ -296,7 +299,7 @@ export function generateTests(CONFIG) {
             expect(imageSrcs.size).to.be.equal(images.length)
         })
 
-        it("თითოეულ სურათს უნდა ჰქონდეს სიგანეც 350px, ხოლო opacity: 70%",() => {
+        it("თითოეულ სურათს უნდა ჰქონდეს სიგანეც 350px, ხოლო opacity: 70%", () => {
             const container = document.querySelector("div#page2 > div#page2-content");
             const image = container.querySelector("img.image-row");
 
@@ -308,16 +311,12 @@ export function generateTests(CONFIG) {
         it(".image-row { width: ...")
 
 
+        it("თუ სურათზე მაუსის კურსორს გადავატარებთ, opacity უნდა გახდეს 100%, ანუ მთლიანად უნდა გამოჩნდეს.", () => {
+            expect(getCssPropertyForRule('.image-row:hover', 'opacity') === "1").to.be.true;
+        })
+        it('.image-row:hover { opacity: ...')
 
-        // it("თუ სურათზე მაუსის კურსორს გადავატარებთ, opacity უნდა გახდეს 100%, ანუ მთლიანად უნდა გამოჩნდეს.",() => {
-        //     const container = document.querySelector("div#page2 > div#page2-content");
-        //     const image = container.querySelector("img.image-row");
-
-        //     const imageStyle = window.getComputedStyle(image);
-        //     expect(imageStyle.getPropertyValue("opacity") == "1").to.be.true;
-        // })
-
-        it(`სურათები თანაბრად უნდა იყვნენ დაშორებული ერთმანეთს და გვერდის კიდეებს.`,() => {
+        it(`სურათები თანაბრად უნდა იყვნენ დაშორებული ერთმანეთს და გვერდის კიდეებს.`, () => {
             const container = document.querySelector("div#page2 > div#page2-content");
 
             const containerStyle = window.getComputedStyle(container);
@@ -325,24 +324,19 @@ export function generateTests(CONFIG) {
             expect(containerStyle.getPropertyValue("justify-content")).to.be.equal("space-around")
         })
         it("ამისთვის დაგჭირდებათ, რომ page2-content display იყოს flex და justify-content იყოს space-around")
-
-        it(`ერთი ჩელენჯი გვაქვს, შეგიძლია, ისე გააკეთო, რომ სურათზე მაუსის მიტანისას
-        სურათი ნაწილობრივ გამჭვირვალე აღარ იყოს?
-        მინიშნება: (css elmeent hover opacity)`, () => {})
-
     })
 
-    CONFIG.isStep(steps.menu) && describe("Menu",() => {
+    CONFIG.isStep(steps.menu) && describe("Menu", () => {
         it(`ჩვენს უზარმაზარ საიტზე ამდენი სქროლვა ცოტათი დამღლელია, 
     მოდი ნავიგაცია დავამატოთ (და თითქმის მოვრჩით).
-    შექმენი div ელემენტი, რომელსაც id ექნება menu`,() => {
+    შექმენი div ელემენტი, რომელსაც id ექნება menu`, () => {
             const div = document.querySelector("div#menu");
             expect(div).to.exist
         })
 
 
         it(`შექმნილ დივში უნდა გვქონდეს ორი ლინკი, რომელიც ჩასქროლავს page1 და page2-ზე. 
-    ლინკებს უნდა ჰქონდეთ კლასი page-navigator`,() => {
+    ლინკებს უნდა ჰქონდეთ კლასი page-navigator`, () => {
             const div = document.querySelector("div#menu");
 
             const children = div.querySelectorAll("a.page-navigator");
@@ -355,7 +349,7 @@ export function generateTests(CONFIG) {
 
 
         it(`შექმნილი div#menu უნდა იყოს ფიქსირებული და სქროლვისას უნდა ჩანდეს ზედა მარჯვენა მხარეს. 
-    ამ ელემენტს უნდა ჰქონდეს 2px სისქის solid gold border`,() => {
+    ამ ელემენტს უნდა ჰქონდეს 2px სისქის solid gold border`, () => {
             const div = document.querySelector("div#menu");
 
             const divStyle = window.getComputedStyle(div);
@@ -373,16 +367,16 @@ export function generateTests(CONFIG) {
 
     })
 
-    CONFIG.isStep(steps.footer) && describe("Footer",() => {
+    CONFIG.isStep(steps.footer) && describe("Footer", () => {
         it(`შენი არ ვიცი და მე და გიგი ძალიან დავიღალეთ ამხელა დავალების კეთებით,
     ამიტომ იძულებული ვართ აქ დავასრულოთ. არადა სურათების ქვემოთ აღწერები და
-    მთელი ამბები გვინდოდა გვესწავლებინა. მოკლედ, საიტის ბოლოში დაამატე ახალი div#footer`,() => {
+    მთელი ამბები გვინდოდა გვესწავლებინა. მოკლედ, საიტის ბოლოში დაამატე ახალი div#footer`, () => {
             const footer = document.querySelector("div#footer");
             expect(footer).to.exist
         })
         it(`footer ელემენტში შექმენი ორი პარაგრაფი. პირველი პარაგრაფი ორი span ელემენტით. ერთში ჩაწერე შენი სახელი და გვარი.
     მეორეში, ჩაწერე "Ⓒ თბილისის თავისუფალი უნივერსიტეტი, 2021". არ დაგავიწყდეს გაცენტრვა. მეორე პარაგრაფში
-    რამე მესიჯი დამიწერე :)`,() => {
+    რამე მესიჯი დამიწერე :)`, () => {
             const footer = document.querySelector("div#footer");
 
             const paragraphs = footer.querySelectorAll("p");
@@ -404,8 +398,9 @@ export function generateTests(CONFIG) {
     })
 
 }
-function strStartsWith(str, prefix){
-    return str.indexOf(prefix,0) !== -1;
+
+function strStartsWith(str, prefix) {
+    return str.indexOf(prefix, 0) !== -1;
 }
 
 function strEndsWith(str, suffix) {
@@ -413,9 +408,9 @@ function strEndsWith(str, suffix) {
 }
 
 
-function setupGuessingPasswordHeader(passwordsDiv){
+function setupGuessingPasswordHeader(passwordsDiv) {
     let title = document.createElement("div");
-    title.setAttribute("id","random-password-header");
+    title.setAttribute("id", "random-password-header");
 
     // title.innerHTML = `ეცადე იპოვო პაროლი Inspect Element საშუალებით. პაროლის div ელემენტს აქვს კლასი '.real-password'`;
     title.style = "text-align: center";
@@ -423,13 +418,12 @@ function setupGuessingPasswordHeader(passwordsDiv){
 }
 
 
-function setupGuessingPasswordBody(CONFIG, passwordsDiv, count = 104 * 5){
+function setupGuessingPasswordBody(CONFIG, passwordsDiv, count = 104 * 5) {
     const max = 999999
     const min = 100000
 
     let passwordsBodyContainer = document.createElement("div");
-    passwordsBodyContainer.setAttribute("id","random-passwords-body");
-
+    passwordsBodyContainer.setAttribute("id", "random-passwords-body");
 
 
     for (let c = 0; c < count; c++) {
@@ -458,11 +452,25 @@ function setupGuessingPasswordBody(CONFIG, passwordsDiv, count = 104 * 5){
 
 function setupGuessingPassword(CONFIG) {
     let passwordsDiv = document.createElement("div");
-    passwordsDiv.setAttribute("id","random-password-list");
+    passwordsDiv.setAttribute("id", "random-password-list");
 
     document.body.appendChild(passwordsDiv);
 
     setupGuessingPasswordHeader(passwordsDiv);
     setupGuessingPasswordBody(CONFIG, passwordsDiv);
     //setupGuessingPasswordFooter(passwordsDiv);
+}
+
+function getCssPropertyForRule(rule, prop) {
+    let sheets = document.styleSheets;
+    let slen = sheets.length;
+    for (let i = 0; i < slen; i++) {
+        let rules = document.styleSheets[i].cssRules;
+        let rlen = rules.length;
+        for (let j = 0; j < rlen; j++) {
+            if (rules[j].selectorText === rule) {
+                return rules[j].style[prop];
+            }
+        }
+    }
 }
