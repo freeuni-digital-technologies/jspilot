@@ -32,7 +32,7 @@ export function generateTests(CONFIG) {
     უკვე ნაჩვენებია). შენ თვითონ დაარეგულირე
     რამდენად ხშირად გამოიყენებ მინიშნებებს (და მაგის მაგივრად, მაგალითად, დაგუგლავ
     ან სემინარში მოძებნი პასუხს`)
-        it(`ტესტები ისეა დაწერილი, რომ  `)
+        // it(`ტესტები ისეა დაწერილი, რომ  `)
         toggle('help')
 
         showMessage('პირობები', 'სამუშაო-გარემო')
@@ -98,7 +98,7 @@ export function generateTests(CONFIG) {
 
 
         it(`შექმენი div ელემენტი, რომლის id იქნება website-title-container და
-    მასში დაამატე h1, რომლის id იქნება website-title. ხოლო კლასი უნდა ქონდეს შენი emailid
+    მასში დაამატე h1, რომლის id იქნება website-title. ხოლო კლასი უნდა ქონდეს შენი email id
         ჩაწერე სათაური, რომელიც იქნება შემდეგი ფორმატის, მაგალითად: გიგის საიტი. აუცილებელია, რომ ზუსტად
         ეს სიტყვები გამოიყენო`, () => {
             const elem = document.querySelector("div#website-title-container");
@@ -290,13 +290,14 @@ export function generateTests(CONFIG) {
             const images = container.querySelectorAll("img.image-row");
             expect(images).to.have.lengthOf.at.least(3)
 
-            let imageSrcs = new Set();
-            for (image of images) {
+
+            let imageSources = new Set();
+            for(let image of images) {
                 const src = image.getAttribute("src");
                 expect(src).to.have.lengthOf.at.least(1)
-                imageSrcs.add(src);
+                imageSources.add(src);
             }
-            expect(imageSrcs.size).to.be.equal(images.length)
+            expect(imageSources.size).to.be.equal(images.length)
         })
 
         it("თითოეულ სურათს უნდა ჰქონდეს სიგანეც 350px, ხოლო opacity: 70%", () => {
@@ -444,9 +445,8 @@ function setupGuessingPasswordBody(CONFIG, passwordsDiv, count = 104 * 5) {
     let randomPasswordIndex = Math.floor(Math.random() * count)
     let realPasswordDiv = document.getElementsByClassName("fake-password")[randomPasswordIndex];
 
-    realPasswordDiv.classList = "real-password";
+    realPasswordDiv.className = "real-password";
     realPasswordDiv.innerText = realPassword;
-
 
 }
 

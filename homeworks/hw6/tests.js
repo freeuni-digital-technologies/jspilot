@@ -18,6 +18,7 @@ const steps = {
 export function generateTests(hw) {
 	let CONFIG = hw.config
 	CONFIG.hints = 'on'
+
 // TODO შეგვიძლია შევამოწმოთ window.url 
 // და მაგის მიხედვით ჩავრთოთ ყველა ტესტი 
 // CONFIG.checkAll = true
@@ -334,7 +335,6 @@ export function generateTests(hw) {
 		celebrationGif.height = 400
 		document.getElementById('tests').insertBefore(celebrationGif, document.getElementById('help'))
 	})
-
 }
 
 function setPassword(CONFIG) {
@@ -343,8 +343,4 @@ function setPassword(CONFIG) {
         CONFIG.password = password;
         CONFIG.save();
     }
-}
-
-window.getFirstNumber = () => {
-	return 
 }

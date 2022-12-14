@@ -1,11 +1,11 @@
-export function createServerConfig(CONFIG) {
-	CONFIG.isStep = function(i) {
+export function createServerConfig(config) {
+	config.isStep = function(i) {
 		return i > 2 && i < 8
 	}
-	return CONFIG
+	return config
 }
 
-export function generateServerTests() {
+export function generateServerTests(hw) {
 
 }
 

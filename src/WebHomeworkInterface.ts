@@ -22,7 +22,6 @@ export class WebHomework implements HomeworkInterface {
 
         this.checkPath();
         setupTestsDiv(config);
-
         toggle("help");
     }
 

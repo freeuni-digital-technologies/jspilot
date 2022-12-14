@@ -5,7 +5,7 @@ export function createServerConfig(CONFIG) {
     return CONFIG
 }
 
-export function generateServerTests() {
+export function generateServerTests(hw) {
 
 }
 
