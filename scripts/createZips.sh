@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 rm -r dist 2> /dev/null
-for hw in $(/bin/ls homeworks | grep -v "teststyles.css")
+for hw in $(/bin/ls homeworks | grep -v "teststyles.css" | grep -v "static")
 do
 	mkdir -p "dist/$hw"
   find_string="<script type='module' src='./main.js'>"
