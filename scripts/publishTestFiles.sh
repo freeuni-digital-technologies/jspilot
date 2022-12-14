@@ -1,8 +1,8 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 changes=$(git status --porcelain)
-echo $changes
-if [[ ! -z $changes ]]
+echo "$changes"
+if [[ -n $changes ]]
 then
 	echo "changes exist in repository. commit first"
 	exit 1
@@ -19,7 +19,7 @@ fi
 git checkout dist
 git pull
 # go back to build from source
-git checkout $current_branch
+git checkout "$current_branch"
 yarn build-student-tests
 # TODO
 cp homeworks/hw8/animation.js dist/hw8 2> /dev/null
@@ -28,5 +28,5 @@ cp -r dist/* docs/
 git add docs/
 git commit -m "auto commit"
 git push
-git checkout $current_branch
+git checkout "$current_branch"
 

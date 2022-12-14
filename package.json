@@ -1,5 +1,6 @@
 {
   "name": "jspilot",
+  "license": "MIT",
   "packageManager": "yarn@3.0.2",
   "devDependencies": {
     "@types/mocha": "^9.1.1",
