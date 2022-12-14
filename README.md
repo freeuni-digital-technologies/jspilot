@@ -43,6 +43,28 @@
    yarn createZips
    ```
 
+### Setting up github pages
+```shell
+git checkout --orphan dist
+touch .gitignore
+```
+
+gitignore:
+```text
+.DS_Store
+.idea
+.parcel-cache
+node_modules
+server-tests
+dist
+```
+```shell
+git add .
+git commit -m "initial commit"
+git push -u origin dist
+```
+set up github pages from dist branch
+
 ## publish homework
 ```sh
 # commit your changes
