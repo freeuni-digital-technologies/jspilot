@@ -1,12 +1,12 @@
 import {setUpServer} from '../../src/SetUpServer'
 import {generateTests} from './tests'
 import {createServerConfig, generateServerTests, getScore} from './extras'
-import {DigitalHwProcessState} from "../../src/DigitalHwProcessState"
+import { WebHomework } from '../../src/WebHomeworkInterface'
 
-let hw = new DigitalHwProcessState()
+const hw = new WebHomework();
 
 hw.config = createServerConfig(hw.config)
-const { launch } = setUpServer()
+const launch = setUpServer()
 generateTests(hw.config)
 generateServerTests(hw.config)
 launch(getScore)
