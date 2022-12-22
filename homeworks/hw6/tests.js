@@ -1,4 +1,4 @@
-import { expect, assert } from 'chai'
+import { expect } from 'chai'
 import { toggle, splitToLines } from '../../src/utils'
 import { showMessage } from '../../src/HwInstructions'
 
@@ -10,18 +10,14 @@ const steps = {
 	addition2: 5,
 	addition_check: 6,
 	addition_refactor: 7,
-	substract: 8,
+	subtract: 8,
 	finish: 9
-
 }
 		
 export function generateTests(hw) {
 	let CONFIG = hw.config
 	CONFIG.hints = 'on'
 
-// TODO შეგვიძლია შევამოწმოთ window.url 
-// და მაგის მიხედვით ჩავრთოთ ყველა ტესტი 
-// CONFIG.checkAll = true
 	CONFIG.isStep(steps.introduction) && describe(`მინი კალკულატორი`, () => {
 		CONFIG.hints = 'on'
 		it(`ამ დავალების მიზანია ჯავასკრიპტის ფუნქციების და DOM-ის ვარჯიში.
@@ -137,7 +133,7 @@ export function generateTests(hw) {
 		it(`ტექსტის რიცხვში გადასაყვანად ჯავასკრიპტში არსებობს ფუნქცია
 			Number, რომელსაც ტექსტს მიაწვდი და რიცხვად გადააქცევს. სცადე:`)
 		it(`console > Number(a) + Number(b)`)
-		it(`კარგი, მოდი ამ ეტაპზე პროგრესი index.jsში შევინახოთ. შექმენი ფუნქცია
+		it(`კარგი, მოდი ამ ეტაპზე პროგრესი index.js-ში შევინახოთ. შექმენი ფუნქცია
 			calculatorAdd და მიაბი იგი მიმატების ღილაკს. რომ გავიგოთ, 
 			სწორად მუშაობს თუ არა, ფუნქციიდან უბრალოდ რამე მესიჯი გააგზავნე
 			კონსოლში. გადატვირთე გვერდი, გახსენი კონსოლი, მაუსით დააჭირე + ღილაკს და ნახე მესიჯი
@@ -185,6 +181,7 @@ export function generateTests(hw) {
 			const b = Math.round(Math.random() * 10)
 			document.getElementById('number1').value = a
 			document.getElementById('number2').value = b
+			// noinspection JSCheckFunctionSignatures
 			document.getElementById('add').onclick()
 			const res = document.getElementById('result').innerText
 			expect(Number(res)).equal(a + b)
@@ -194,6 +191,7 @@ export function generateTests(hw) {
 			const b = Math.round(Math.random() * 10)
 			document.getElementById('number1').value = a
 			document.getElementById('number2').value = b
+			// noinspection JSUnresolvedFunction
 			calculatorAdd()
 			const res = document.getElementById('result').innerText
 			expect(Number(res)).equal(a + b)
@@ -223,8 +221,9 @@ export function generateTests(hw) {
 		it(`ახლა კი calculatorAdd() ფუნქციაში ბოლო ხაზი ჩაანაცვლე setResult-ის გამოძახებით`, () => {
 		 	window.resultFunctionChecker = false
 		 	const oldSetResult = window.setResult
- 			window.setResult = () => resultFunctionChecker = true
- 			calculatorAdd()
+ 			window.setResult = () => window.resultFunctionChecker = true
+ 			// noinspection JSUnresolvedFunction
+			calculatorAdd()
  			expect(resultFunctionChecker).to.be.true
  			window.setResult = oldSetResult
 		 })
@@ -249,8 +248,9 @@ export function generateTests(hw) {
 		 it(`გამოიყენე getValue() ფუნქცია: calculatorAdd() - ში (შეცვალე პირველი ორი ხაზი)`, () => {
 		 	window.setValueFunctionCount = 0
 		 	const oldGetValue = window.getValue
-		 	window.getValue = (id) => setValueFunctionCount++
-		 	calculatorAdd()
+		 	window.getValue = (_) => setValueFunctionCount++
+			 // noinspection JSUnresolvedFunction
+			 calculatorAdd()
 		 	expect(setValueFunctionCount).equal(2)
 		 	window.getValue = oldGetValue
 		 })
@@ -280,28 +280,34 @@ export function generateTests(hw) {
 				let numberTimesCalled = 0
 				const oldGetValue = window.getValue
 				// getValue-მ რომ არ გამოიძახოს Number()
-		 		window.getValue = (id) => {}
+		 		window.getValue = (_) => {}
 				window.Number = () => numberTimesCalled++
-				calculatorAdd()
+			 // noinspection JSUnresolvedFunction
+
+			 calculatorAdd()
 				expect(numberTimesCalled).equal(0)
 				window.getValue = oldGetValue
 				window.Number = oldNumber
-				calculatorAdd()
+			 // noinspection JSUnresolvedFunction
+
+			 calculatorAdd()
 			})
 		 it(`let result = a + b`)
 
 	})
 
 
-	CONFIG.isStep(steps.substract) && describe('გამოკლება', () => {
+	CONFIG.isStep(steps.subtract) && describe('გამოკლება', () => {
 		it(`ძააალიან მაგარია.`, () => {})
-		it(`შეგიძლია calculatorSubstract() ფუნქციის დაწერა
+		it(`შეგიძლია calculatorSubtract() ფუნქციის დაწერა
 			დამოუკიდებლად სცადო?`, () => {
 			const a = Math.round(Math.random() * 10)
 			const b = Math.round(Math.random() * 10)
 			document.getElementById('number1').value = a
 			document.getElementById('number2').value = b
-			calculatorSubstract()
+			// noinspection JSUnresolvedFunction
+
+			calculatorSubtract()
 			const res = document.getElementById('result').innerText
 			expect(Number(res)).equal(a - b)
 		})
@@ -311,18 +317,19 @@ export function generateTests(hw) {
 			const b = Math.round(Math.random() * 10)
 			document.getElementById('number1').value = a
 			document.getElementById('number2').value = b
-			document.getElementById('substract').onclick()
+			// noinspection JSCheckFunctionSignatures
+			document.getElementById('subtract').onclick()
 			const res = document.getElementById('result').innerText
 			expect(Number(res)).equal(a - b)
 		})
 		splitToLines(`
-			function calculatorSubstract() {
+			function calculatorSubtract() {
 				let a = getValue('number1')
 				let b = getValue('number2')
 				let result = a - b
 				setResult(result)
 			}
-			document.getElementById('substract').onclick = calculatorSubstract
+			document.getElementById('subtract').onclick = calculatorSubtract
 		`)
 	})
 

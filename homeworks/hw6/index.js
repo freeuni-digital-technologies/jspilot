@@ -4,7 +4,7 @@ function getCalculatorElement(){
 	const firstInput = createElement("input", "number1", "")
 	const secondInput = createElement("input", "number2", "")
 	const firstButton = createElement("button", "add", "+")
-	const secondButton = createElement("button", "substract", "-")
+	const secondButton = createElement("button", "subtract", "-")
 	const span = createElement("span", "result", "")
 	div.appendChild(firstInput)
 	div.appendChild(secondInput)
