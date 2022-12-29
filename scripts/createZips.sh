@@ -8,6 +8,6 @@ do
   replace_string="<script type='text/javascript' src='http://freeuni-digital-technologies.github.io/jspilot/$hw/main.js'>"
   sed -i.bak "s~$find_string~$replace_string~" "homeworks/$hw/index.html" && rm "homeworks/$hw/index.html.bak"
 	zip -rj "dist/$hw/$hw.zip" "homeworks/$hw/" -x \
-		\*solution\* \*server.js \*extras.js \*tests.js \*main.js \*animation.js
+		\*solution\* \*server.js \*extras.js \*tests.js \*main.js
   git checkout "homeworks/$hw/index.html"
 done
