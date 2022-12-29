@@ -63,6 +63,7 @@ export function generateTests(hw) {
         check(`startingRadius`, 80, 120)
         check(`radiusOffset`, 5, 15)
         check(`startingY`, -200, -50)
+        check(`lightRadius`, 5, 15)
         it(`trunkGradation`, () => {
             const studentConfig = createConfig()
             expect(studentConfig.trunkGradation).to.not.equal(0)
@@ -110,6 +111,6 @@ function check(parameter, a, b) {
     })
 }
 function checkBounds(n, a, b) {
-    expect(n).to.be.above(a - 1.5)
-    expect(n).to.be.below(b + 1.5)
+    expect(n).to.be.above(a - 1)
+    expect(n).to.be.below(b + 1)
 }   
