@@ -4,9 +4,9 @@
 // 	addLights()
 // }
 
-/** 
+/**
  * გაითვალისწინეთ, რომ ამ ფუნქციის გარდა ყველა სხვა ცვლილება სერვერზე არ აისახება
- * 
+ *
  */
 function createConfig() {
 	return	{
@@ -19,11 +19,13 @@ function createConfig() {
 		startingY: 0, // -50 -დან  -200 -მდე
 		// რა მანძილი იყოს სამკუთხედებს შორის
 		yOffset: 0, // 30-დან  40-მდე
-		// ამ სიაში დამატებული ფერებით მონაცვლეობით 
+		// ამ სიაში დამატებული ფერებით მონაცვლეობით
 		// გაფერადდება ნაძვის ხის "შუქები" (წრეები)
 		lightColors: ['#222222', '#222222'], // შეცვალე ფერები და დაამატე კიდევ 1-2 ფერი
-		// წვერში ნათურის ფერი. 
+		// წვერში ნათურის ფერი.
 		topLightColor: '#222222',
+		// რა რადიუსი ქონდეთ ნათურებს
+		lightRadius: 8,
 		// უსურვე რამე შენს კურსელებს. მესიჯი გამოჩნდება სიტყვა "გისურვებ"-ის შემდეგ
 		message: "ბედნიერ 2022 წელს",
 		trunkStartingColor: {
@@ -68,35 +70,35 @@ function addLight(i) {
 	let radius = getRadius(i)
 	// რაც უფრო მაღლაა, უფრო ცოტა ნათურა გვინდა
 	let distanceX = getXDistance(radius, config.triangleCount + 2 - i)
-	let distanceY = getYDistance(radius, 1)
-	let yPos = getY(i)
 	let lightCount = 0
-	// ამ  ხაზს ვინც სწორად დაწერთ ბონუს ქულას მიიღებთ (ნათურები რომ 
+	let lightsYCoordinate = getLightsYCoordinate(i);
+	// ამ  ხაზს ვინც სწორად დაწერთ ბონუს ქულას მიიღებთ (ნათურები რომ
 	// არ იყოს აცდენილი). უბრალოდ უნდა დაიანგარიშოთ yOffset*i და გამოაკლოთ
 	// ჯამში i-მდე რადიუსის ცვლილებები
 	// მეილზე მომწერეთ თუ გააკეთებთ და პირველი რამდენიმე მიიღებს ბონუსს.
-	for (let y = yPos; y < yPos + radius; y+= distanceY) {
-		for (let x = -radius + distanceX/2; x < radius; x += distanceX) {
-			let light = new Light(x, y + config.yOffset, 5, 0)
-			lightCount++
-			light.setColor(getLightColor(lightCount))
-			animate({
-				targets: light,
-				scale: 1
-			})
-		}
+	for (let x = -radius + distanceX/2; x < radius; x += distanceX) {
+		let light = new Light(x, lightsYCoordinate, config.lightRadius, 0)
+		lightCount++
+		light.setColor(getLightColor(lightCount))
+		animate({
+			targets: light,
+			scale: 1
+		})
 	}
 }
 
+function getLightsYCoordinate(i) {
+	return getY(i) + getRadius(i) / 2 + config.lightRadius
+}
 
 function addTopLight() {
 	let topY = getTopY()
-	let light = new Light(0, topY, 5, 0)
+	let light = new Light(0, topY, config.lightRadius, 0)
+	light.setColor(config.topLightColor)
 	animate({
 		targets: light,
 		scale: 1
 	})
-	light.setColor(config.topLightColor)
 }
 
 function getTrunkColor(i) {
@@ -105,7 +107,6 @@ function getTrunkColor(i) {
 	let blue = config.trunkStartingColor.blue + (i*config.trunkGradation) % 255
 	return `rgb(${red}, ${green}, ${blue})`
 }
-
 
 function getLightColor(i) {
 	return config.lightColors[i % config.lightColors.length]
@@ -128,11 +129,11 @@ function getTopY() {
 }
 
 function getY(i) {
-	return getRadius(i) - i*config.yOffset	
+	return getRadius(i) - i*config.yOffset
 }
 
 
 // ამ ფუნქციას ჩვენ გამოვიძახებთ სხვა ფაილიდან საჭირო დროს :)
 function displayMessage() {
-	new Message(0, getY(0) + 60, 'გისურვებ ' + config.message)
+	document.getElementById('message').innerHTML = 'გისურვებ ' + config.message
 }
