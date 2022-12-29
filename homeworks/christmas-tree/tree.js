@@ -10,17 +10,24 @@
  */
 function createConfig() {
 	return	{
+		// რა მანძილი იყოს სამკუთხედებს შორის
+		yOffset: 0, // 30-დან  40-მდე
+		// რამდენი სამკუთხედისგან შედგებოდეს საახალწლო ხე
 		triangleCount: 2, // 3-დან 6-მდე
+		trunkStartingColor: {
+			red: 50,
+			green: 50,
+			blue: 50
+		},
 		// ქვედა სამკუთხედის რადიუსი
 		startingRadius: 79, // 80-დან 120-მდე
 		// ამდენით შემცირდება ყოველი მომდევნო სამკუთხედის რადიუსი (ზომა)
 		radiusOffset: 1, // 5-დან  15-მდე
 		// "ზემოდან ჩამოსვლის" ეფექტისთვის
 		startingY: 0, // -50 -დან  -200 -მდე
-		// რა მანძილი იყოს სამკუთხედებს შორის
-		yOffset: 0, // 30-დან  40-მდე
 		// ამ სიაში დამატებული ფერებით მონაცვლეობით
 		// გაფერადდება ნაძვის ხის "შუქები" (წრეები)
+		// ფერის ასარჩევად, დაგუგლე color picker და დააკოპირე hex კოდი
 		lightColors: ['#222222', '#222222'], // შეცვალე ფერები და დაამატე კიდევ 1-2 ფერი
 		// წვერში ნათურის ფერი.
 		topLightColor: '#222222',
@@ -28,11 +35,6 @@ function createConfig() {
 		lightRadius: 8,
 		// უსურვე რამე შენს კურსელებს. მესიჯი გამოჩნდება სიტყვა "გისურვებ"-ის შემდეგ
 		message: "ბედნიერ 2022 წელს",
-		trunkStartingColor: {
-			red: 50,
-			green: 50,
-			blue: 50
-		},
 		// ყოველ ჯერზე ამდენით გაღიავდება/გამუქდება ფერი
 		// გახადე ეს მნიშვნელობა უარყოფითი, თუ გინდა, რომ ზედა სამკუთხედები გამუქდეს
 		trunkGradation: 0 // -50 -დან 50-მდე
@@ -41,6 +43,10 @@ function createConfig() {
 
 const config = createConfig()
 
+/**
+ * როგორც ხედავ, addTrunk(i) ფუნქციას იმდენჯერ ვიძახებთ,
+*  რა რაოდენობაც კონფიგურაციაში მივუთითეთ triangleCount-სთვის
+ */
 function createTrunk() {
 	for (let i = 0; i < config.triangleCount; i++) {
 		addTrunk(i)
@@ -54,6 +60,10 @@ function addLights() {
 	addTopLight()
 }
 
+/**
+ * ისე მაქვს გამზადებული, რომ თითოეული სამკუთხედის დახატვისას
+ * ფერი დინამიურად აიღოს.
+ */
 function addTrunk(i) {
 	let color = getTrunkColor(i)
 	let radius = getRadius(i)
@@ -101,6 +111,10 @@ function addTopLight() {
 	})
 }
 
+/**
+ * ყველა მათგანის შემდეგ +i*trunkGradation ნიშნავს,
+ * რომ ყოველი მომდევნო სამკუთხედის სიმუქე იმდენით მეტი/ნაკლები იქნება.
+ */
 function getTrunkColor(i) {
 	let red = config.trunkStartingColor.red + (i*config.trunkGradation) % 255
 	let green = config.trunkStartingColor.green + (i*config.trunkGradation) % 255
