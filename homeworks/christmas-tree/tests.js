@@ -83,8 +83,15 @@ export function generateTests(hw) {
     })
 
     CONFIG.isStep(steps.finish) && describe('🌲🎄🤶🏼', () => {
+        const message = document.createElement('div')
+        message.id = 'message'
+        const testsDiv = document.getElementById('tests')
+        console.log(testsDiv)
+        testsDiv.parentNode.insertBefore(message, testsDiv.nextSibling)
+        console.log(testsDiv.parentNode)
         const s = createConfig()
         displayMessage()
+
         it(`message-ის ტექსტიც შეცვალე და სულ ეს არის. დავალება ჩვეულებრივ ატვირთე`, () => {
             expect(s.message).to.not.equal('ბედნიერ 2022 წელს')
         })

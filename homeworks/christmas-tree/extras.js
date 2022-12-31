@@ -1,4 +1,3 @@
-import { generateTests } from "./tests"
 
 export function createServerConfig(CONFIG) {
 	// CONFIG.isStep = function(i) {
@@ -16,7 +15,7 @@ export function getScore(test) {
 }
 
 export function generateServerTests(CONFIG) {
-	generateTests(CONFIG)
+
 }
 
 
