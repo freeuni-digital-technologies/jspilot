@@ -9,6 +9,13 @@ active
     padding: 10px;
     font-size: 14px;
 }
+
+#message {
+    margin: auto;
+    width: 400px;
+    text-align: center;
+}
+
 #tests {
     font-family: sans-serif;
 }
