@@ -1,6 +1,6 @@
 export function createServerConfig(config) {
 	config.isStep = function(i) {
-		return true // TODO
+		return i > 1
 	}
 	return config
 }

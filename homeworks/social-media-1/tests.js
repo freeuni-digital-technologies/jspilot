@@ -96,23 +96,25 @@ export function generateTests(hw) {
         it(`თუ ჩამოთვლილი ნაბიჯები შეასრულე, გამოიძაზე consoleReady()`, () => this.fail())
 
         window.consoleReady = function() {
-            if (typeof (window.textarea) === 'undefined') {
+            const textArea = document.getElementById(specifiers.textareaId)
+            const postsContainer = document.getElementById(specifiers.postsContainerId)
+            if (typeof (textArea) === 'undefined') {
                 console.error('ცვლადი სახელით textarea არ არსებობს')
                 return
             }
-            if (window.textarea.value.length < 1) {
+            if (textArea.value.length < 1) {
                 console.error('textarea-ში არაფერი წერია, გადაამოწმე რომ კონსოლში textarea.value შეგიძლია წაიკითხო')
                 return
             }
-            if (typeof (window.postsContainer) === 'undefined') {
+            if (typeof (postsContainer) === 'undefined') {
                 console.error('ცვლადი სახელით postsContainer არ არსებობს')
                 return
             }
-            if (window.postsContainer.innerText.length < 1) {
+            if (postsContainer.innerText.length < 1) {
                 console.error(specifiers.postsContainerId + "- ში არაფერი წერია")
                 return
             }
-            HW.nextStep()
+            hw.nextStep()
         }
 
     })
@@ -135,9 +137,14 @@ export function generateTests(hw) {
         ფუნქცია createPostTextDiv(postText) - დააბრუნებს div.${specifiers.postElementTextClass} ელემენტს, innerText-ით postText. ეს 
         ტექსტი საკმარისია მთლიანი ფუნქციის შესაქმნელად, დააკვირდი როგორ "ითარგმნება" კოდში (ასეთი კითხვები იქნება გამოცდაზე)`, () => {
             const postText = 'my post text'
-            const post = window.createPostTextDiv(postText)
-            expect(post.className).equal(specifiers.postElementTextClass)
-            expect(post.innerText).equal(postText)
+            if ('createPostTextDiv' in window) {
+                const post = window.createPostTextDiv(postText)
+                expect(post.className).equal(specifiers.postElementTextClass)
+                expect(post.innerText).equal(postText)
+            } else {
+                console.error('createPostTextDiv ფუნქცია არ არსებობს')
+                this.fail()
+            }
         })
         splitToLines(`
         function createPostTextDiv(postText) {
@@ -146,7 +153,6 @@ export function generateTests(hw) {
             textDiv.className = 'post-text'
             return textDiv
         }`)
-
 
     })
 
@@ -157,10 +163,16 @@ export function generateTests(hw) {
         it(`ფუნქცია createPostElement(postText) შექმნის ელემენტს div.${specifiers.postElementClass} და მასში
         დაამატებს createPostTextDiv(postText)-ს. ბოლოს დააბრუნებს ელემენტს`, () => {
             const postText = 'some random text'
-            const postElem = window.createPostElement(postText)
-            expect(postElem.className).equal(specifiers.postElementClass)
-            expect(postElem.childNodes).length(1)
-            expect(postElem.childNodes[0].innerText).equal(postText)
+            if ('createPostElement' in window) {
+                const postElem = window.createPostElement(postText)
+                expect(postElem.className).equal(specifiers.postElementClass)
+                expect(postElem.childNodes).length(1)
+                expect(postElem.childNodes[0].innerText).equal(postText)
+            } else {
+                console.error('createPostElement ფუნქცია არ არსებობს')
+                this.fail()
+            }
+
         })
         splitToLines(`
             function createPostElement(postText) {
@@ -187,7 +199,7 @@ export function generateTests(hw) {
         it(`console > document.getElementById('${specifiers.postsContainerId}').appendChild(myElement)`)
         it(`ამას რომ გააკეთებ, ისევ გამოიძახე consoleReady() ფუნქცია`, () => this.fail())
         window.consoleReady = function () {
-            if (typeof(window.myElement) === 'undefined') {
+            if (!('myElement' in window)) {
                 console.error(`myElement ცვლადს ვერ ვპოულობ`)
                 return
             }
@@ -195,7 +207,7 @@ export function generateTests(hw) {
                 console.error('პოსტის ელემენტს გვერდზე ვერ ვპოულობ, კონსოლის ხაზებს ყურადღებით მიყევი')
                 return
             }
-            HW.nextStep()
+            hw.nextStep()
         }
     })
 
@@ -211,14 +223,19 @@ export function generateTests(hw) {
             const textarea = document.getElementById(specifiers.textareaId)
             textarea.innerText = 'some random post'
 
-            window.addPost()
+            if ('addPost' in window) {
+                window.addPost()
+                const posts = document.getElementById(specifiers.postsContainerId)
+                const post = posts.childNodes[0]
+                let postTextElem = post.querySelector(`div.${specifiers.postElementTextClass}`)
+                expect(postTextElem.innerText).equal('some random post')
+                textarea.innerText = ''
+                posts.innerHTML = ''
+            } else {
+                console.error('addPost ფუნქცია არ არსებობს')
+                this.fail()
+            }
 
-            const posts = document.getElementById(specifiers.postsContainerId)
-            const post = posts.childNodes[0]
-            let postTextElem = post.querySelector(`div.${specifiers.postElementTextClass}`)
-            expect(postTextElem.innerText).equal('some random post')
-            textarea.innerText = ''
-            posts.innerHTML = ''
         })
         splitToLines(`
            function addPost() {
